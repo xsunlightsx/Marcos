@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo - Bibliosfera</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-subtle">
+        <div class="container-fluid">
+            <a class="navbar-brand text-primary opacity-75" href="#"><img src="../static/img/lib-logo1.jpg" width="30" height="30">Libreria Bibliosfera</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary opacity-75" href="inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary opacity-75" href="catalogo.html">Catalogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary opacity-75" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-primary opacity-75" href="comprar.html">Compras</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="border-buttom bg-little py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
+                    <h2 class="text-primary display-5 fw-bold opacity-75"><i class="bi bi-book"></i> Catalogo</h2>
+                    <h4>"Explora historias que esperan ser descubiertas."</h4>
+                </div>
+                <div class="col-lg-6 col-12 text-center">
+                    <img src="../static/img/lib5.jpg" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="container mt-4 mb-3">
+    <h2 class="text-center my-3">Libros Juveniles</h2>
+    <div class="row g-4">
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib1.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">A dos metros de ti</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="A dos metros de ti"
+                data-author="Rachael Lippincott"
+                data-desc="Stella y Will luchan contra la distancia impuesta por la enfermedad mientras descubren el poder del amor."
+                data-price="S/ 89.90"
+                data-img="img/lib1.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib2.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Boulevard</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Boulevard"
+                data-author="Flor Salvador"
+                data-desc="La historia de Luke y Hasley, dos jóvenes que encuentran en la tristeza un camino hacia el amor."
+                data-price="S/ 49.90"
+                data-img="img/lib2.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib3.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Mujercitas</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Mujercitas"
+                data-author="Louisa May Alcott"
+                data-desc="La vida de las hermanas March en un relato de amor, familia y sueños en tiempos difíciles."
+                data-price="S/ 79.90"
+                data-img="img/lib3.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib4.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Bajo la misma estrella</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Bajo la misma estrella"
+                data-author="John Green"
+                data-desc="Una conmovedora historia de amor entre Hazel y Augustus, dos jóvenes con enfermedades terminales."
+                data-price="S/ 79.90"
+                data-img="img/lib4.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib10.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Etereo</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Etereo"
+                data-author="Joana Marcus"
+                data-desc="Una novela juvenil de fantasía que invita a soñar más allá de lo tangible."
+                data-price="S/ 99.90"
+                data-img="img/lib10.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib11.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Heartstopper</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Heartstopper"
+                data-author="Alice Oseman"
+                data-desc="La tierna historia de Charlie y Nick, descubriendo la amistad y el amor en la adolescencia."
+                data-price="S/ 79.90"
+                data-img="img/lib11.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib12.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">La hipótesis del amor</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="La hipótesis del amor"
+                data-author="Ali Hazelwood"
+                data-desc="Una comedia romántica en el ambiente académico, llena de química y emociones."
+                data-price="S/ 89.90"
+                data-img="img/lib12.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card shadow text-center p-3">
+                <img src="../static/img/lib13.jpg" class="img-fluid rounded shadow">
+                <h3 class="card-title mt-3">Asesino de brujas</h3>
+                <button class="btn btn-primary mt-2 ver-mas"
+                data-title="Asesino de brujas"
+                data-author="Shelby Mahurin"
+                data-desc="Una historia de brujas, cazadores y amores prohibidos en un mundo de fantasía oscura."
+                data-price="S/ 79.90"
+                data-img="img/lib13.jpg"
+                data-bs-toggle="modal" 
+                data-bs-target="#libroModal">
+                Ver más
+                </button>
+            </div>
+        </div>
+
+    <!-- MODAL REUTILIZABLE -->
+        <div class="modal fade" id="libroModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImg" src="" class="img-fluid rounded mb-3">
+                        <p><strong>Autor:</strong> <span id="modalAuthor"></span></p>
+                        <p id="modalDesc"></p>
+                        <p><strong>Precio:</strong> <span id="modalPrice"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const botones = document.querySelectorAll(".ver-mas");
+
+            botones.forEach(boton => {
+                boton.addEventListener("click", () => {
+                const title = boton.dataset.title;
+                const author = boton.dataset.author;
+                const desc = boton.dataset.desc;
+                const price = boton.dataset.price;
+                const img = boton.dataset.img;
+
+                document.getElementById("modalTitle").textContent = title;
+                document.getElementById("modalAuthor").textContent = author;
+                document.getElementById("modalDesc").textContent = desc;
+                document.getElementById("modalPrice").textContent = price;
+                document.getElementById("modalImg").src = img;
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-primary-subtle text-primary opacity-75 py-4 mt-5">
+        <div class="container">
+            <div class="row text-center">
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-telephone fs-4 d-block mb-1"></i>
+                <span class="fw-bold">Teléfono:</span>
+                <p class="mb-0">925659658</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-envelope fs-4 d-block mb-1"></i>
+                <span class="fw-bold">Correo:</span>
+                <p class="mb-0">Bibliosfera_lib@gmail.com</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <i class="bi bi-geo-alt-fill fs-4 d-block mb-1"></i>
+                <span class="fw-bold">Dirección:</span>
+                <p class="mb-0">Av. Brasil 702<br>Centro Comercial La Rambla</p>
+            </div>
+            </div>
+            <p class="text-center small mb-0">© 2025 Bibliósfera - Todos los derechos reservados</p>
+        </div>
+    </footer>
+</body>
+
+</html>
