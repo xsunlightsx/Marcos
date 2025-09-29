@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Listado</title></head>
+<body>
+<h2>Listado de Personas</h2>
+<table border="1">
+    <tr><th>ID</th><th>Nombre</th><th>Correo</th></tr>
+    <tr th:each="p : ${personas}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.nombre}"></td>
+        <td th:text="${p.correo}"></td>
+    </tr>
+</table>
+<a href="/ingreso">Ingresar nueva persona</a>
+</body>
+</html>
