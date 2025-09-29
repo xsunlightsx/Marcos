@@ -20,13 +20,14 @@ public class CarritoController {
     public String mostrarCompras(Model model) {
         model.addAttribute("items", carritoService.listarProductos());
         model.addAttribute("total", carritoService.obtenerTotal());
-        return "comprar"; // src/main/resources/templates/comprar.html
+        return "comprar"; 
     }
 
     @PostMapping("/agregar")
-    public String agregarProducto(@RequestParam Long idLibro,
+    public String agregarProducto(@RequestParam String titulo,
+                                  @RequestParam double precio,
                                   @RequestParam int cantidad) {
-        // Aquí normalmente buscarías el libro en una DB, para ejemplo se crea temporal
+
         Libro libro = new Libro();
         libro.setId(idLibro);
         libro.setTitulo("Libro " + idLibro);
