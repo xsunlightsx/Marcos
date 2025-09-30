@@ -32,7 +32,6 @@ public class CarritoController {
     Libro libro = new Libro();
     libro.setTitulo(titulo);
     libro.setPrecio(precio);
-    libro.setId(Id);
 
     carritoService.agregarProducto(libro, cantidad);
 
