@@ -25,18 +25,19 @@ public class CarritoController {
 
     @PostMapping("/agregar")
     public String agregarProducto(@RequestParam String titulo,
-                                  @RequestParam double precio,
-                                  @RequestParam int cantidad) {
+                              @RequestParam double precio,
+                              @RequestParam int cantidad,
+                              @RequestParam Long Id) {
 
-        Libro libro = new Libro();
-        libro.setId(idLibro);
-        libro.setTitulo("Libro " + idLibro);
-        libro.setPrecio(10.0);
+    Libro libro = new Libro();
+    libro.setTitulo(titulo);
+    libro.setPrecio(precio);
+    libro.setId(Id);
 
-        carritoService.agregarProducto(libro, cantidad);
+    carritoService.agregarProducto(libro, cantidad);
 
-        return "redirect:/compras";
-    }
+    return "redirect:/compras";
+}
 
     @GetMapping("/eliminar/{id}")
     public String eliminarProducto(@PathVariable Long id) {
