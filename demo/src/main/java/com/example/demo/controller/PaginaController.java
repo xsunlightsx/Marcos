@@ -1,11 +1,12 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PaginaController {
+
     @GetMapping("/inicio")
     public String inicio(Model model) {
         model.addAttribute("contenido", "inicio :: contenido");
@@ -24,9 +25,9 @@ public class PaginaController {
         return "index";
     }
 
-    @GetMapping("/carrito")
-    public String carrito(Model model) {
-        model.addAttribute("contenido", "carrito :: contenido");
+    @GetMapping("/comprar")
+    public String comprar(Model model) {
+        model.addAttribute("contenido", "comprar :: contenido");
         return "index";
     }
 }

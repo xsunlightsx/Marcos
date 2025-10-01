@@ -7,8 +7,7 @@ import java.util.List;
 
 @Repository
 public class LibroDAO {
-
-    private final JdbcTemplate jdbcTemplate;
+/*private final JdbcTemplate jdbcTemplate;
 
     public LibroDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -31,5 +30,6 @@ public class LibroDAO {
     public void eliminar(Long id) {
         String sql = "DELETE FROM libros WHERE id = ?";
         jdbcTemplate.update(sql, id);
-    }
+    }/* */
 }
+
