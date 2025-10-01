@@ -1,19 +1,22 @@
 package com.example.demo.model;
 
 public class Libro {
+    private Long id;
     private String nombre;
     private double precio;
     private int cantidad;
 
-    public Libro(){
+    public Libro() {}
 
-    }
-
-    public Libro(String nombre, double precio, int cantidad) {
+    public Libro(Long id, String nombre, double precio) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
-        this.cantidad = cantidad;
+        this.cantidad = 1; // por defecto 1 unidad
     }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -26,4 +29,3 @@ public class Libro {
 
     public double getSubtotal() { return precio * cantidad; }
 }
-
