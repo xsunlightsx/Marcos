@@ -10,7 +10,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary-subtle">
         <div class="container-fluid">
-            <a class="navbar-brand text-primary opacity-75" href="#"><img src="../static/img/lib-logo1.jpg" width="30" height="30">Libreria Bibliosfera</a>
+            <a class="navbar-brand text-primary opacity-75" th:href="@{/}">
+    <img th:src="@{/img/lib-logo1.jpg}" width="30" height="30"> Librería Bibliosfera
+</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
                     aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
@@ -41,7 +43,7 @@
                     <h4>"Explora historias que esperan ser descubiertas."</h4>
                 </div>
                 <div class="col-lg-6 col-12 text-center">
-                    <img src="../static/img/lib5.jpg" class="img-fluid rounded shadow">
+                    <img th:src="@{../static/img/lib5.jpg}" class="img-fluid rounded shadow">
                 </div>
             </div>
         </div>
@@ -51,7 +53,7 @@
     <div class="row g-4">
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib1.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{../static/img/lib1.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">A dos metros de ti</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="A dos metros de ti"
@@ -67,7 +69,7 @@
         </div>
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib2.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib2.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Boulevard</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="Boulevard"
@@ -84,7 +86,7 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib3.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib3.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Mujercitas</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="Mujercitas"
@@ -101,7 +103,7 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib4.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib4.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Bajo la misma estrella</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="Bajo la misma estrella"
@@ -118,7 +120,7 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib10.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib10.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Etereo</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="Etereo"
@@ -135,7 +137,7 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib11.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib11.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Heartstopper</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="Heartstopper"
@@ -152,7 +154,7 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib12.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib12.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">La hipótesis del amor</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
                 data-title="La hipótesis del amor"
@@ -169,17 +171,17 @@
 
         <div class="col-md-3 d-flex">
             <div class="card shadow text-center p-3">
-                <img src="../static/img/lib13.jpg" class="img-fluid rounded shadow">
+                <img th:src="@{/img/lib13.jpg}" class="img-fluid rounded shadow">
                 <h3 class="card-title mt-3">Asesino de brujas</h3>
                 <button class="btn btn-primary mt-2 ver-mas"
-                data-title="Asesino de brujas"
-                data-author="Shelby Mahurin"
-                data-desc="Una historia de brujas, cazadores y amores prohibidos en un mundo de fantasía oscura."
-                data-price="S/ 79.90"
-                data-img="img/lib13.jpg"
-                data-bs-toggle="modal" 
-                data-bs-target="#libroModal">
-                Ver más
+                    data-title="Boulevard"
+                    data-author="Flor Salvador"
+                    data-desc="La historia de Luke y Hasley..."
+                    data-price="S/ 49.90"
+                    data-img="/img/lib2.jpg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#libroModal">
+                    Ver más
                 </button>
             </div>
         </div>
