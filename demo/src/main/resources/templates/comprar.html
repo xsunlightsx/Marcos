@@ -16,13 +16,13 @@
     <!-- Formulario para agregar libros -->
     <form th:action="@{/comprar/agregar}" method="post" class="row mb-4">
         <div class="col-md-3">
-            <input type="text" name="titulo" class="form-control" placeholder="Libro" required>
+            <input type="text" th:field="*{nombre}" class="form-control" placeholder="Libro" required>
         </div>
         <div class="col-md-3">
-            <input type="number" step="0.01" name="precio" class="form-control" placeholder="Precio" required>
+            <input type="number" step="0.01" th:field="*{precio}" class="form-control" placeholder="Precio" required>
         </div>
         <div class="col-md-3">
-            <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" required>
+            <input type="number" th:field="*{cantidad}" class="form-control" placeholder="Cantidad" required>
         </div>
         <div class="col-md-3">
             <button type="submit" class="btn btn-primary w-100">Agregar</button>
@@ -41,11 +41,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="item : ${items}">
-                <td th:text="${item.libro.titulo}"></td>
-                <td th:text="${item.libro.precio}"></td>
-                <td th:text="${item.cantidad}"></td>
-                <td th:text="${item.subtotal}"></td>
+            <tr th:each="libro, iter : ${carrito}">
+                <td th:text="${libro.nombre}"></td>
+                <td th:text="${libro.precio}"></td>
+                <td th:text="${libro.cantidad}"></td>
+                <td th:text="${libro.subtotal}"></td>
                 <td>
                     <a th:href="@{'/comprar/eliminar/' + ${item.libro.id}}" class="btn btn-danger btn-sm">
                         Eliminar
@@ -53,6 +53,7 @@
                 </td>
             </tr>
         </tbody>
+
     </table>
 
     <h4 class="text-end">Total: 

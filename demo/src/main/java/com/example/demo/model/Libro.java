@@ -1,25 +1,29 @@
 package com.example.demo.model;
 
 public class Libro {
-    private Long id;
-    private String titulo;
+    private String nombre;
     private double precio;
+    private int cantidad;
 
-    public Libro() { }
+    public Libro(){
 
-    public Libro(Long id, String titulo, double precio) {
-        this.id = id;
-        this.titulo = titulo;
-        this.precio = precio;
     }
 
-    // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Libro(String nombre, double precio, int cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
 
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     public double getPrecio() { return precio; }
     public void setPrecio(double precio) { this.precio = precio; }
+
+    public int getCantidad() { return cantidad; }
+    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
+
+    public double getSubtotal() { return precio * cantidad; }
 }
+

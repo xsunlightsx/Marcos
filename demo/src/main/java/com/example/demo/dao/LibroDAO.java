@@ -23,7 +23,7 @@ public class LibroDAO {
     public List<Libro> listar() {
         String sql = "SELECT * FROM libros";
         return jdbcTemplate.query(sql, (rs, rowNum) ->
-                new Libro(rs.getLong("id"), rs.getString("titulo"), rs.getDouble("precio")));
+                new Libro(rs.getString("titulo"), rs.getDouble("precio"), rs.getInt("cantidad")));
     }
 
     // Eliminar libro
