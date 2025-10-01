@@ -8,7 +8,7 @@
 </head>
 <body>
 
-
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary-subtle">
     <div class="container-fluid">
         <a class="navbar-brand text-primary opacity-75" href="#">
@@ -17,22 +17,15 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link text-primary opacity-75" th:href="@{/inicio}">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary opacity-75" th:href="@{/catalogo}">Catálogo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary opacity-75" th:href="@{/nosotros}">Nosotros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-primary opacity-75" th:href="@{/carrito}">Compras</a>
-            </li>
+            <li class="nav-item"><a class="nav-link text-primary opacity-75" th:href="@{/inicio}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link text-primary opacity-75" th:href="@{/catalogo}">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link text-primary opacity-75" th:href="@{/nosotros}">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link text-primary opacity-75" th:href="@{/carrito}">Compras</a></li>
         </ul>
     </div>
 </nav>
 
+<!-- HEADER -->
 <header class="bg-light py-4">
     <div class="container">
         <div class="row align-items-center">
@@ -46,24 +39,28 @@
         </div>
 </header>
 
+<!-- SECCIÓN CARRITO -->
 <section class="container mt-4">
     <h3 class="text-center"><i class="bi bi-cart4"></i> Carrito de Compras</h3>
 
-    <form th:action="@{/carrito/agregar}" method="post" class="row mb-4">
+    <!-- FORMULARIO -->
+    <form th:action="@{/carrito/agregar}" method="post" th:object="${nuevoLibro}" class="row mb-4">
         <div class="col-md-3">
-            <input type="text" name="titulo" class="form-control" placeholder="Libro" required>
+            <input type="text" th:field="*{nombre}" class="form-control" placeholder="Libro" required>
         </div>
         <div class="col-md-3">
-            <input type="number" step="0.01" name="precio" class="form-control" placeholder="Precio" required>
+            <input type="number" step="0.01" th:field="*{precio}" class="form-control" placeholder="Precio" required>
         </div>
         <div class="col-md-3">
-            <input type="number" name="cantidad" class="form-control" placeholder="Cantidad" required>
+            <input type="number" th:field="*{cantidad}" class="form-control" placeholder="Cantidad" required>
         </div>
         <div class="col-md-3">
             <button type="submit" class="btn btn-primary w-100">Agregar</button>
         </div>
     </form>
 
+
+    <!-- TABLA -->
     <table class="table table-striped text-center align-middle">
         <thead>
             <tr>
@@ -75,25 +72,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="item : ${items}">
-                <td th:text="${item.libro.titulo}"></td>
-                <td th:text="${item.libro.precio}"></td>
-                <td th:text="${item.cantidad}"></td>
-                <td th:text="${item.subtotal}"></td>
+            <tr th:each="libro, iter : ${carrito}">
+                <td th:text="${libro.nombre}"></td>
+                <td th:text="${libro.precio}"></td>
+                <td th:text="${libro.cantidad}"></td>
+                <td th:text="${libro.subtotal}"></td>
                 <td>
-                    <a th:href="@{'/carrito/eliminar/' + ${item.libro.id}}" class="btn btn-danger btn-sm">
-                        Eliminar
-                    </a>
+                    <a th:href="@{/carrito/eliminar/{i}(i=${iter.index})}" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
             </tr>
         </tbody>
+
     </table>
 
+    <!-- TOTAL -->
     <h4 class="text-end">Total: <span class="text-primary fw-bold" th:text="${total}"></span></h4>
 </section>
 
+<!-- FOOTER -->
 <footer class="bg-primary-subtle text-primary py-3 mt-5">
     <p class="text-center small mb-0">© 2025 Bibliósfera - Todos los derechos reservados</p>
 </footer>
+
 </body>
 </html>

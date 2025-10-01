@@ -1,47 +1,40 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Libro;
-import com.example.demo.service.CarritoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
-@RequestMapping("/compras")
+@RequestMapping("/carrito")
 public class CarritoController {
 
-    private final CarritoService carritoService;
-
-    public CarritoController(CarritoService carritoService) {
-        this.carritoService = carritoService;
-    }
+    private List<Libro> carrito = new ArrayList<>();
 
     @GetMapping
-    public String mostrarCompras(Model model) {
-        model.addAttribute("items", carritoService.listarProductos());
-        model.addAttribute("total", carritoService.obtenerTotal());
-        return "comprar"; 
+    public String mostrarCarrito(Model model) {
+        double total = carrito.stream().mapToDouble(Libro::getSubtotal).sum();
+        model.addAttribute("carrito", carrito);
+        model.addAttribute("total", total);
+        model.addAttribute("nuevoLibro", new Libro());
+        return "compras"; // nombre de tu HTML
     }
 
-    @PostMapping("/agregar")
-    public String agregarProducto(@RequestParam String titulo,
-                              @RequestParam double precio,
-                              @RequestParam int cantidad,
-                              @RequestParam Long Id) {
+    @PostMapping("/agregar")  
+    public String agregarLibro(@ModelAttribute Libro nuevoLibro) {
+        carrito.add(nuevoLibro);
+        return "redirect:/carrito"; // vuelve a cargar la tabla
+    }
 
-    Libro libro = new Libro();
-    libro.setTitulo(titulo);
-    libro.setPrecio(precio);
-
-    carritoService.agregarProducto(libro, cantidad);
-
-    return "redirect:/compras";
-}
-
-    @GetMapping("/eliminar/{id}")
-    public String eliminarProducto(@PathVariable Long id) {
-        carritoService.eliminarProducto(id);
-        return "redirect:/compras";
+    @GetMapping("/eliminar/{index}")
+    public String eliminarLibro(@PathVariable int index) {
+        if (index >= 0 && index < carrito.size()) {
+            carrito.remove(index);
+        }
+        return "redirect:/carrito";
     }
 }
 
