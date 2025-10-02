@@ -13,28 +13,26 @@ import java.util.List;
 public class LibroController {
 
     private final List<Libro> libros = new ArrayList<>();
-    private Long contadorId = 1L;
 
     @GetMapping("/nuevo")
     public String nuevoLibroForm() {
-        return "nuevo-libro"; // vista formulario
+        return "nuevo-libro"; 
     }
 
     @PostMapping("/guardar")
-    public String guardarLibro(@RequestParam String titulo, @RequestParam double precio) {
-        libros.add(new Libro(contadorId++, titulo, precio));
+    public String guardarLibro(@RequestParam String nombre, @RequestParam double precio) {
+        libros.add(new Libro(nombre, precio));
         return "redirect:/libros/lista";
     }
-
     @GetMapping("/lista")
     public String listarLibros(Model model) {
         model.addAttribute("libros", libros);
-        return "lista-libros"; // vista listado
+        return "lista-libros"; 
     }
 
-    @GetMapping("/eliminar/{id}")
-    public String eliminarLibro(@PathVariable Long id) {
-        libros.removeIf(l -> l.getId().equals(id));
+    @GetMapping("/eliminar/{nombre}")
+    public String eliminarLibro(@PathVariable String nombre) {
+        libros.removeIf(l -> l.getNombre().equals(nombre));
         return "redirect:/libros/lista";
     }
 }

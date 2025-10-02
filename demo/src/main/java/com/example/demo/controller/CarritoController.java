@@ -19,13 +19,13 @@ public class CarritoController {
         double total = carrito.stream().mapToDouble(Libro::getSubtotal).sum();
         model.addAttribute("carrito", carrito);
         model.addAttribute("total", total);
-        model.addAttribute("nuevoLibro", new Libro());
+        model.addAttribute("libro", new Libro());
         return "compras"; // nombre de tu HTML
     }
 
     @PostMapping("/agregar")  
-    public String agregarLibro(@ModelAttribute Libro nuevoLibro) {
-        carrito.add(nuevoLibro);
+    public String agregarLibro(@ModelAttribute Libro libro) {
+        carrito.add(libro);
         return "redirect:/carrito"; // vuelve a cargar la tabla
     }
 
