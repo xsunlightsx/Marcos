@@ -20,13 +20,13 @@ public class CarritoController {
         model.addAttribute("carrito", carrito);
         model.addAttribute("total", total);
         model.addAttribute("libro", new Libro());
-        return "compras"; // nombre de tu HTML
+        return "compras"; 
     }
 
     @PostMapping("/agregar")  
     public String agregarLibro(@ModelAttribute Libro libro) {
         carrito.add(libro);
-        return "redirect:/carrito"; // vuelve a cargar la tabla
+        return "redirect:/carrito"; 
     }
 
     @GetMapping("/eliminar/{index}")

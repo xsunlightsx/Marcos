@@ -13,6 +13,6 @@ public class BibliotecaController {
         model.addAttribute("generos", new String[]{"Ficción", "No Ficción", "Ciencia", "Historia"});
         model.addAttribute("prestamosPorMes", new int[]{2, 4, 6, 8, 5, 7});
         model.addAttribute("meses", new String[]{"Ene", "Feb", "Mar", "Abr", "May", "Jun"});
-        return "recomendaciones"; // <-- nombre del archivo en templates
+        return "recomendaciones";
     }
 }

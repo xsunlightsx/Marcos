@@ -28,11 +28,8 @@ public class PaginaController {
     @GetMapping("/compras")
     public String compras(Model model) {
         model.addAttribute("libro", new Libro());
-
-        // carrito vacío por defecto
         model.addAttribute("carrito", new ArrayList<>());
 
-        // total inicial
         model.addAttribute("total", 0.0);
 
         return "compras";
