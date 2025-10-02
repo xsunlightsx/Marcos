@@ -1,62 +1,84 @@
-<div th:fragment="contenido">
-    <header class="bg-light py-4 mb-4">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
-                <h2 class="text-primary fw-bold"><i class="bi bi-cart4"></i> Compras</h2>
-                <h5 class="text-secondary">"Llévate contigo las historias que inspiran."</h5>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compras - Bibliosfera</title>
+    <!-- Los CSS globales se cargarán desde index.html -->
+</head>
+<body>
+
+    <div th:fragment="contenido">
+        <header class="bg-light py-4 mb-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
+                    <h2 class="text-primary fw-bold"><i class="bi bi-cart4"></i> Compras</h2>
+                    <h5 class="text-secondary">"Llévate contigo las historias que inspiran."</h5>
+                </div>
+                <div class="col-lg-6 col-12 text-center">
+                    <img th:src="@{/img/lib5.jpg}" class="img-fluid rounded shadow" alt="Imagen de librería"> <!-- Añadido alt -->
+                </div>
             </div>
-            <div class="col-lg-6 col-12 text-center">
-                <img th:src="@{/img/lib5.jpg}" class="img-fluid rounded shadow">
+        </header>
+
+        <h3 class="text-center"><i class="bi bi-cart4"></i> Carrito de Compras</h3>
+
+        <!-- Formulario para agregar libros -->
+        <!-- Es crucial que tu controlador añada un objeto vacío al modelo con el nombre correcto,
+             ej: model.addAttribute("nuevoLibro", new Libro()); para que th:object funcione.
+             Si los campos son parte de un objeto simple, puedes usar th:object="${nombreDelObjeto}"
+             y luego th:field="*{propiedad}". -->
+        <form th:action="@{/comprar/agregar}" method="post" class="row mb-4" th:object="${libroForm}"> <!-- Asumo un objeto 'libroForm' -->
+            <div class="col-md-3">
+                <input type="text" th:field="*{nombre}" class="form-control" placeholder="Libro" required>
             </div>
-        </div>
-    </header>
+            <div class="col-md-3">
+                <input type="number" step="0.01" th:field="*{precio}" class="form-control" placeholder="Precio" required>
+            </div>
+            <div class="col-md-3">
+                <input type="number" th:field="*{cantidad}" class="form-control" placeholder="Cantidad" required>
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Agregar</button>
+            </div>
+        </form>
 
-    <h3 class="text-center"><i class="bi bi-cart4"></i> Carrito de Compras</h3>
+        <!-- Tabla con items del carrito -->
+        <table class="table table-striped text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Libro</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Verifica el nombre del objeto en la colección. Si tu controlador pasa
+                     List<ItemCarrito> carrito, y cada ItemCarrito tiene un 'libro' y 'subtotal',
+                     entonces la sintaxis sería correcta. -->
+                <tr th:each="item : ${carrito}"> <!-- Cambiado 'libro, iter' a solo 'item' para simplicidad si 'item' es un objeto del carrito -->
+                    <td th:text="${item.libro.nombre}">Nombre de ejemplo</td> <!-- Acceso a propiedades del libro dentro del item -->
+                    <td th:text="${item.libro.precio}">Precio de ejemplo</td>
+                    <td th:text="${item.cantidad}">Cantidad de ejemplo</td>
+                    <td th:text="${item.subtotal}">Subtotal de ejemplo</td>
+                    <td>
+                        <!-- Asegúrate de que 'item.libro.id' exista y sea accesible -->
+                        <a th:href="@{'/comprar/eliminar/' + ${item.libro.id}}" class="btn btn-danger btn-sm">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+                <tr th:if="${carrito == null or carrito.empty}"> <!-- Mensaje si el carrito está vacío -->
+                    <td colspan="5">El carrito está vacío.</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- Formulario para agregar libros -->
-    <form th:action="@{/comprar/agregar}" method="post" class="row mb-4">
-        <div class="col-md-3">
-            <input type="text" th:field="*{nombre}" class="form-control" placeholder="Libro" required>
-        </div>
-        <div class="col-md-3">
-            <input type="number" step="0.01" th:field="*{precio}" class="form-control" placeholder="Precio" required>
-        </div>
-        <div class="col-md-3">
-            <input type="number" th:field="*{cantidad}" class="form-control" placeholder="Cantidad" required>
-        </div>
-        <div class="col-md-3">
-            <button type="submit" class="btn btn-primary w-100">Agregar</button>
-        </div>
-    </form>
+        <h4 class="text-end">Total:
+            <span class="text-primary fw-bold" th:text="${total}">0.00</span> <!-- Asegúrate de pasar 'total' al modelo -->
+        </h4>
+    </div>
 
-    <!-- Tabla con items del carrito -->
-    <table class="table table-striped text-center align-middle">
-        <thead>
-            <tr>
-                <th>Libro</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="libro, iter : ${carrito}">
-                <td th:text="${libro.nombre}"></td>
-                <td th:text="${libro.precio}"></td>
-                <td th:text="${libro.cantidad}"></td>
-                <td th:text="${libro.subtotal}"></td>
-                <td>
-                    <a th:href="@{'/comprar/eliminar/' + ${item.libro.id}}" class="btn btn-danger btn-sm">
-                        Eliminar
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-
-    </table>
-
-    <h4 class="text-end">Total: 
-        <span class="text-primary fw-bold" th:text="${total}"></span>
-    </h4>
-</div>
+</body>
+</html>
