@@ -1,13 +1,13 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Libro;
+/*import com.example.demo.model.Libro;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
 public class LibroDAO {
-/*private final JdbcTemplate jdbcTemplate;
+private final JdbcTemplate jdbcTemplate;
 
     public LibroDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -30,6 +30,6 @@ public class LibroDAO {
     public void eliminar(Long id) {
         String sql = "DELETE FROM libros WHERE id = ?";
         jdbcTemplate.update(sql, id);
-    }/* */
+    } 
 }
-
+*/

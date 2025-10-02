@@ -9,25 +9,25 @@ public class PaginaController {
 
     @GetMapping("/inicio")
     public String inicio(Model model) {
-        model.addAttribute("contenido", "inicio :: contenido");
+        model.addAttribute("contenido", "inicio.html :: contenido");
         return "index";
     }
 
     @GetMapping("/catalogo")
     public String catalogo(Model model) {
-        model.addAttribute("contenido", "catalogo :: contenido");
+        model.addAttribute("contenido", "catalogo.html :: contenido");
         return "index";
     }
 
     @GetMapping("/nosotros")
     public String nosotros(Model model) {
-        model.addAttribute("contenido", "nosotros :: contenido");
+        model.addAttribute("contenido", "nosotros.html :: contenido");
         return "index";
     }
 
     @GetMapping("/comprar")
     public String comprar(Model model) {
-        model.addAttribute("contenido", "comprar :: contenido");
+        model.addAttribute("contenido", "compras.html :: contenido");
         return "index";
     }
 }
