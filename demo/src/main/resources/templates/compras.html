@@ -8,11 +8,12 @@
 </head>
 <body>
 
-    <!-- Navbar (fragmento) -->
-    <div th:replace="fragments/navbar :: navbar"></div>
+    <!-- Navbar (directo con Bootstrap y Thymeleaf) -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
+
+    <!-- Contenido compras -->
     <div class="container mt-4">
-        <!-- Aquí va todo tu contenido de compras -->
         <header class="bg-light py-4 mb-4 rounded shadow-sm">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
@@ -20,7 +21,7 @@
                     <h5 class="text-secondary">"Llévate contigo las historias que inspiran."</h5>
                 </div>
                 <div class="col-lg-6 col-12 text-center">
-                    <img th:src="@{img/lib5.jpg}" class="img-fluid rounded shadow" alt="Imagen de librería">
+                    <img th:src="@{/img/lib5.jpg}" class="img-fluid rounded shadow" alt="Imagen de librería">
                 </div>
             </div>
         </header>
@@ -77,8 +78,10 @@
         </h4>
     </div>
 
-    <!-- Footer (fragmento) -->
-    <div th:replace="fragments/footer :: footer"></div>
+    <!-- Footer directo -->
+    <footer class="bg-dark text-light text-center py-3 mt-4">
+        <p class="mb-0">&copy; 2025 Bibliosfera - Todos los derechos reservados</p>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

@@ -3,160 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <title>Catálogo - Bibliosfera</title>
-    <!-- Si este archivo fuera accedido directamente, necesitaría sus propios CSS aquí.
-         Como es un fragmento inyectado, usa los CSS del index.html principal. -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
-    <div th:fragment="contenido">
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-        <!-- Header -->
-        <header class="border-bottom bg-light py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
-                        <h2 class="text-primary display-5 fw-bold opacity-75"><i class="bi bi-book"></i> Catálogo</h2>
-                        <h4>"Explora historias que esperan ser descubiertas."</h4>
+
+
+    <!-- Header -->
+    <header class="border-bottom bg-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-12 text-center text-lg-start mb-3 mb-lg-0">
+                    <h2 class="text-primary display-5 fw-bold opacity-75"><i class="bi bi-book"></i> Catálogo</h2>
+                    <h4>"Explora historias que esperan ser descubiertas."</h4>
+                </div>
+                <div class="col-lg-6 col-12 text-center">
+                    <img th:src="@{/img/lib5.jpg}" class="img-fluid rounded shadow" alt="Catálogo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Catálogo de libros -->
+    <section class="container mt-4 mb-3">
+        <h2 class="text-center my-3">Libros Juveniles</h2>
+        <div class="row g-4">
+
+            <!-- Libro 1 -->
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img th:src="@{/img/lib1.jpg}" class="img-fluid rounded shadow" alt="A dos metros de ti">
+                    <h3 class="card-title mt-3">A dos metros de ti</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                        data-title="A dos metros de ti"
+                        data-author="Rachael Lippincott"
+                        data-desc="Stella y Will luchan contra la distancia impuesta por la enfermedad mientras descubren el poder del amor."
+                        data-price="S/ 89.90"
+                        data-img="/img/lib1.jpg"
+                        data-bs-toggle="modal"
+                        data-bs-target="#libroModal">
+                        Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib2.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Boulevard</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Boulevard"
+                    data-author="Flor Salvador"
+                    data-desc="La historia de Luke y Hasley, dos jóvenes que encuentran en la tristeza un camino hacia el amor."
+                    data-price="S/ 49.90"
+                    data-img="img/lib2.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib3.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Mujercitas</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Mujercitas"
+                    data-author="Louisa May Alcott"
+                    data-desc="La vida de las hermanas March en un relato de amor, familia y sueños en tiempos difíciles."
+                    data-price="S/ 79.90"
+                    data-img="img/lib3.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib4.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Bajo la misma estrella</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Bajo la misma estrella"
+                    data-author="John Green"
+                    data-desc="Una conmovedora historia de amor entre Hazel y Augustus, dos jóvenes con enfermedades terminales."
+                    data-price="S/ 79.90"
+                    data-img="img/lib4.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib10.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Etereo</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Etereo"
+                    data-author="Joana Marcus"
+                    data-desc="Una novela juvenil de fantasía que invita a soñar más allá de lo tangible."
+                    data-price="S/ 99.90"
+                    data-img="img/lib10.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib11.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Heartstopper</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Heartstopper"
+                    data-author="Alice Oseman"
+                    data-desc="La tierna historia de Charlie y Nick, descubriendo la amistad y el amor en la adolescencia."
+                    data-price="S/ 79.90"
+                    data-img="img/lib11.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib12.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">La hipótesis del amor</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="La hipótesis del amor"
+                    data-author="Ali Hazelwood"
+                    data-desc="Una comedia romántica en el ambiente académico, llena de química y emociones."
+                    data-price="S/ 89.90"
+                    data-img="img/lib12.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex">
+                <div class="card shadow text-center p-3">
+                    <img src="img/lib13.jpg" class="img-fluid rounded shadow">
+                    <h3 class="card-title mt-3">Asesino de brujas</h3>
+                    <button class="btn btn-primary mt-2 ver-mas"
+                    data-title="Asesino de brujas"
+                    data-author="Shelby Mahurin"
+                    data-desc="Una historia de brujas, cazadores y amores prohibidos en un mundo de fantasía oscura."
+                    data-price="S/ 79.90"
+                    data-img="img/lib13.jpg"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#libroModal">
+                    Ver más
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal Reutilizable -->
+        <div class="modal fade" id="libroModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-                    <div class="col-lg-6 col-12 text-center">
-                        <!-- RUTA CORREGIDA: Usar th:src="@{/ruta/}" para recursos estáticos -->
-                        <img th:src="@{/img/lib5.jpg}" class="img-fluid rounded shadow" alt="Catálogo">
+                    <div class="modal-body text-center">
+                        <img id="modalImg" src="" class="img-fluid rounded mb-3">
+                        <p><strong>Autor:</strong> <span id="modalAuthor"></span></p>
+                        <p id="modalDesc"></p>
+                        <p><strong>Precio:</strong> <span id="modalPrice"></span></p>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <!-- Libros Juveniles -->
-        <section class="container mt-4 mb-3">
-            <h2 class="text-center my-3">Libros Juveniles</h2>
-            <div class="row g-4">
 
-                <!-- Libro 1 -->
-                <div class="col-md-3 d-flex">
-                    <div class="card shadow text-center p-3">
-                        <!-- RUTA CORREGIDA: Usar th:src="@{/ruta/}" para recursos estáticos -->
-                        <img th:src="@{/img/lib1.jpg}" class="img-fluid rounded shadow" alt="A dos metros de ti">
-                        <h3 class="card-title mt-3">A dos metros de ti</h3>
-                        <button class="btn btn-primary mt-2 ver-mas"
-                            data-title="A dos metros de ti"
-                            data-author="Rachael Lippincott"
-                            data-desc="Stella y Will luchan contra la distancia impuesta por la enfermedad mientras descubren el poder del amor."
-                            data-price="S/ 89.90"
-                            data-img="/img/lib1.jpg"
-                            data-bs-toggle="modal"
-                            data-bs-target="#libroModal">
-                            Ver más
-                        </button>
-                    </div>
-                </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const botones = document.querySelectorAll(".ver-mas");
 
-                <!-- Libro 2 -->
-                <div class="col-md-3 d-flex">
-                    <div class="card shadow text-center p-3">
-                        <!-- RUTA CORREGIDA: Usar th:src="@{/ruta/}" para recursos estáticos -->
-                        <img th:src="@{/img/lib2.jpg}" class="img-fluid rounded shadow" alt="Boulevard">
-                        <h3 class="card-title mt-3">Boulevard</h3>
-                        <button class="btn btn-primary mt-2 ver-mas"
-                            data-title="Boulevard"
-                            data-author="Flor Salvador"
-                            data-desc="La historia de Luke y Hasley, dos jóvenes que encuentran en la tristeza un camino hacia el amor."
-                            data-price="S/ 49.90"
-                            data-img="/img/lib2.jpg"
-                            data-bs-toggle="modal"
-                            data-bs-target="#libroModal">
-                            Ver más
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Libro 3 -->
-                <div class="col-md-3 d-flex">
-                    <div class="card shadow text-center p-3">
-                        <!-- RUTA CORREGIDA: Usar th:src="@{/ruta/}" para recursos estáticos -->
-                        <img th:src="@{/img/lib3.jpg}" class="img-fluid rounded shadow" alt="Mujercitas">
-                        <h3 class="card-title mt-3">Mujercitas</h3>
-                        <button class="btn btn-primary mt-2 ver-mas"
-                            data-title="Mujercitas"
-                            data-author="Louisa May Alcott"
-                            data-desc="La vida de las hermanas March en un relato de amor, familia y sueños en tiempos difíciles."
-                            data-price="S/ 79.90"
-                            data-img="/img/lib3.jpg"
-                            data-bs-toggle="modal"
-                            data-bs-target="#libroModal">
-                            Ver más
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Libro 4 -->
-                <div class="col-md-3 d-flex">
-                    <div class="card shadow text-center p-3">
-                        <!-- RUTA CORREGIDA: Usar th:src="@{/ruta/}" para recursos estáticos -->
-                        <img th:src="@{/img/lib4.jpg}" class="img-fluid rounded shadow" alt="Bajo la misma estrella">
-                        <h3 class="card-title mt-3">Bajo la misma estrella</h3>
-                        <button class="btn btn-primary mt-2 ver-mas"
-                            data-title="Bajo la misma estrella"
-                            data-author="John Green"
-                            data-desc="Una conmovedora historia de amor entre Hazel y Augustus, dos jóvenes con enfermedades terminales."
-                            data-price="S/ 79.90"
-                            data-img="/img/lib4.jpg"
-                            data-bs-toggle="modal"
-                            data-bs-target="#libroModal">
-                            Ver más
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ¡Importante! Asegúrate de que los data-img en los botones también
-                     tengan la ruta correcta si se usan para cargar la imagen en el modal.
-                     Si los has definido como '/img/lib1.jpg', es probable que ya estén bien
-                     para el JavaScript. -->
-
-            </div>
-
-            <!-- Modal Reutilizable -->
-            <div class="modal fade" id="libroModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitle"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <img id="modalImg" src="" class="img-fluid rounded mb-3">
-                            <p><strong>Autor:</strong> <span id="modalAuthor"></span></p>
-                            <p id="modalDesc"></p>
-                            <p><strong>Precio:</strong> <span id="modalPrice"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Script para modal -->
-        <!-- NOTA: Si este script depende de elementos que se cargan solo una vez en index.html,
-             o si causa duplicación, considera moverlo a un archivo .js externo y cargarlo globalmente
-             o asegurarte de que solo se ejecute una vez. Por ahora, aquí funciona. -->
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const botones = document.querySelectorAll(".ver-mas");
-
-                botones.forEach(boton => {
-                    boton.addEventListener("click", () => {
-                        document.getElementById("modalTitle").textContent = boton.dataset.title;
-                        document.getElementById("modalAuthor").textContent = boton.dataset.author;
-                        document.getElementById("modalDesc").textContent = boton.dataset.desc;
-                        document.getElementById("modalPrice").textContent = boton.dataset.price;
-                        // Asegúrate que data-img del botón tenga la ruta correcta desde la raíz de /static
-                        document.getElementById("modalImg").src = boton.dataset.img;
-                    });
+            botones.forEach(boton => {
+                boton.addEventListener("click", () => {
+                    document.getElementById("modalTitle").textContent = boton.dataset.title;
+                    document.getElementById("modalAuthor").textContent = boton.dataset.author;
+                    document.getElementById("modalDesc").textContent = boton.dataset.desc;
+                    document.getElementById("modalPrice").textContent = boton.dataset.price;
+                    document.getElementById("modalImg").src = boton.dataset.img;
                 });
             });
-        </script>
+        });
+    </script>
 
-    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
 </body>
 </html>
