@@ -10,7 +10,7 @@ public class Libro {
     public Libro(String nombre, double precio) {
         this.nombre = nombre;
         this.precio = precio;
-        this.cantidad = 1; // por defecto 1 unidad
+        this.cantidad = 1; 
     }
 
     public String getNombre() { return nombre; }
