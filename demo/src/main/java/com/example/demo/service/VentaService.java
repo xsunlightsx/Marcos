@@ -46,6 +46,13 @@ public class VentaService {
             Libro libro = libroRepository.findById(item.getIdLibro())
                 .orElseThrow(() -> new RuntimeException("Error fatal: Libro no encontrado con ID: " + item.getIdLibro() + ". Compra abortada."));
             
+            // Verificar y actualizar el stock
+            if (libro.getStock() < item.getCantidad()) {
+                throw new RuntimeException("No hay suficiente stock para el libro: " + libro.getNombre());
+            }
+            libro.actualizarStock(-item.getCantidad()); // Reducir el stock
+            libroRepository.save(libro);
+            
             DetalleVenta detalle = new DetalleVenta();
             
             detalle.setVenta(ventaGuardada); 
