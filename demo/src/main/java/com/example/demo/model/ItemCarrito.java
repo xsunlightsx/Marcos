@@ -4,33 +4,26 @@ import java.io.Serializable;
 import java.math.BigDecimal; 
 import java.util.Objects; 
 
-public class ItemCarrito implements Serializable {
+public class ItemCarrito {
 
-    private static final long serialVersionUID = 1L;
-
-    private Long idLibro; 
-    private String nombre; // Título del libro
+    private Long idLibro;
+    private String nombre;
+    private BigDecimal precio;
     private Integer cantidad;
-    private BigDecimal precio; // Precio unitario (usando BigDecimal para precisión)
-    private BigDecimal subtotal;
+    private BigDecimal subtotal; // Almacena el precio * cantidad
 
-    // Constructor vacío (requerido por algunas librerías)
+    // Constructor vacío (necesario para algunas operaciones y librerías)
     public ItemCarrito() {
     }
 
-    // Constructor principal
-    public ItemCarrito(Long idLibro, String nombre, BigDecimal precio, Integer cantidad) {
-        this.idLibro = idLibro;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.cantidad = cantidad;
-        this.subtotal = precio.multiply(BigDecimal.valueOf(cantidad));
-    }
-
-    // Método para calcular el subtotal (útil para actualizar la cantidad)
-    public void calcularSubtotal() {
-        this.subtotal = this.precio.multiply(BigDecimal.valueOf(this.cantidad));
-    }
+    // ⭐ CONSTRUCTOR CORRECTO QUE INCLUYE EL CÁLCULO DEL SUBTOTAL ⭐
+   public ItemCarrito(Long idLibro, String nombre, BigDecimal precio, Integer cantidad) { 
+    this.idLibro = idLibro;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.cantidad = cantidad;
+    this.subtotal = precio.multiply(BigDecimal.valueOf(cantidad));
+}
 
     // --- Getters y Setters ---
 
@@ -50,23 +43,24 @@ public class ItemCarrito implements Serializable {
         this.nombre = nombre;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
-        // Recalcular el subtotal cada vez que se cambia la cantidad
-        calcularSubtotal();
-    }
-
     public BigDecimal getPrecio() {
         return precio;
     }
 
     public void setPrecio(BigDecimal precio) {
         this.precio = precio;
-        calcularSubtotal();
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+        // ⚠️ IMPORTANTE: Si la cantidad cambia, el subtotal debe recalcularse
+        if (this.precio != null) {
+            this.subtotal = this.precio.multiply(BigDecimal.valueOf(cantidad));
+        }
     }
 
     public BigDecimal getSubtotal() {

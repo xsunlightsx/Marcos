@@ -28,17 +28,17 @@ public class LibroController {
     @PostMapping("/guardar")
     public String guardarLibro(
             @RequestParam String nombre, 
-            @RequestParam String precioInput, 
+            @RequestParam String precio, 
             @RequestParam String autor,
             @RequestParam String descripcion,
             @RequestParam int cantidad, // <-- Parámetro de stock
             @RequestParam String imagenUrl) {
         
         // Convertir el String a BigDecimal
-        BigDecimal precio = new BigDecimal(precioInput);
+        BigDecimal precioDecimal = new BigDecimal(precio);
         
         // 1. Crear el objeto Libro
-        Libro nuevoLibro = new Libro(nombre, precio, autor, descripcion, imagenUrl);
+        Libro nuevoLibro = new Libro(nombre, precioDecimal, autor, descripcion, imagenUrl);
         
         // ⭐ CORRECCIÓN CLAVE: Asignar el stock que recibimos del formulario
         nuevoLibro.setCantidad(cantidad); 
