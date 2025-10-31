@@ -14,7 +14,8 @@ public class Libro {
 
     @Column(name = "precio", precision = 10, scale = 2) 
     private BigDecimal precio; 
-    private int cantidad; 
+    private int cantidad;
+    private int stock;
     private String autor; 
     
     @Column(length = 1000) 
