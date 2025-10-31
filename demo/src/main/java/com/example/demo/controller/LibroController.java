@@ -5,6 +5,8 @@ import com.example.demo.JPA.LibroRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,19 +28,23 @@ public class LibroController {
     @PostMapping("/guardar")
     public String guardarLibro(
             @RequestParam String nombre, 
-            @RequestParam double precio,
-            // ⭐ CAMPOS NUEVOS AÑADIDOS ⭐
+            @RequestParam String precioInput, 
             @RequestParam String autor,
             @RequestParam String descripcion,
+            @RequestParam int cantidad, // <-- Parámetro de stock
             @RequestParam String imagenUrl) {
         
-        // 1. Crear el objeto Libro usando el nuevo constructor
+        // Convertir el String a BigDecimal
+        BigDecimal precio = new BigDecimal(precioInput);
+        
+        // 1. Crear el objeto Libro
         Libro nuevoLibro = new Libro(nombre, precio, autor, descripcion, imagenUrl);
         
-        // 2. Guardar en la base de datos (Persistencia)
+        // ⭐ CORRECCIÓN CLAVE: Asignar el stock que recibimos del formulario
+        nuevoLibro.setCantidad(cantidad); 
+        
         libroRepository.save(nuevoLibro); 
         
-        // 3. Redirigir a la lista de libros
         return "redirect:/libros/lista";
     }
 

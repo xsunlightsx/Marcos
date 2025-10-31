@@ -1,20 +1,18 @@
 package com.example.demo.controller;
 
-import com.example.demo.JPA.LibroRepository; // <-- Importar el Repository
+import com.example.demo.JPA.LibroRepository;
 import com.example.demo.model.Libro;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
-import java.util.List; // <-- Asegúrate de tener este import también
+import java.util.List;
 
 @Controller
 public class PaginaController {
 
-    private final LibroRepository libroRepository; // <-- 1. Declarar el repositorio
-    
-    // <-- 2. Inyectar el repositorio usando el constructor
+    private final LibroRepository libroRepository; 
     public PaginaController(LibroRepository libroRepository) {
         this.libroRepository = libroRepository;
     }
@@ -44,5 +42,9 @@ public class PaginaController {
         model.addAttribute("total", 0.0);
 
         return "compras";
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login"; 
     }
 }
