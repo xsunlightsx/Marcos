@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.math.BigDecimal; // Importamos BigDecimal para manejo preciso de dinero
+import java.math.BigDecimal; 
 
 public class DetalleLibro {
 
@@ -10,32 +10,20 @@ public class DetalleLibro {
     private Integer cantidad;
     private BigDecimal subtotal;
 
-    // Constructor vacío
     public DetalleLibro() {
     }
 
-    // Constructor con campos esenciales
     public DetalleLibro(Libro libro, int cantidad) {
         this.idLibro = libro.getId();
         this.nombre = libro.getNombre();
-        
-        // **********************************************
-        // * CORRECCIÓN: Asignación directa de BigDecimal *
-        // **********************************************
         this.precio = libro.getPrecio(); 
-        
         this.cantidad = cantidad;
-        
-        // Calcular subtotal inmediatamente
         this.subtotal = this.precio.multiply(BigDecimal.valueOf(cantidad));
     }
-    
-    // Método para recalcular el subtotal
+
     public void calcularSubtotal() {
         this.subtotal = this.precio.multiply(BigDecimal.valueOf(this.cantidad));
     }
-
-    // --- Getters y Setters ---
 
     public Long getIdLibro() {
         return idLibro;

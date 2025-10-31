@@ -9,24 +9,20 @@ public class MetodoPago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_metodo_pago")
-    private Long id; // Usamos Long para el ID
+    private Long id;
 
     @Column(name = "nombre", nullable = false, unique = true)
-    private String nombre; // Nombre del método (e.g., "Tarjeta de Crédito", "Transferencia")
+    private String nombre; 
 
     @Column(name = "activo", nullable = false)
-    private Boolean activo = true; // Si el método está disponible (valor por defecto)
+    private Boolean activo = true; 
 
-    // Constructor por defecto (requerido por JPA)
     public MetodoPago() {
     }
 
-    // Constructor con parámetros
     public MetodoPago(String nombre) {
         this.nombre = nombre;
     }
-
-    // --- Getters y Setters ---
 
     public Long getId() {
         return id;

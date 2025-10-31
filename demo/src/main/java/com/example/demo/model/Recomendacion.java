@@ -15,7 +15,6 @@ public class Recomendacion {
         this.motivo = motivo;
     }
 
-    // Getters y Setters
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
 

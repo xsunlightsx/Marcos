@@ -1,6 +1,5 @@
 package com.example.demo.model; 
 
-import java.io.Serializable;
 import java.math.BigDecimal; 
 import java.util.Objects; 
 
@@ -10,13 +9,10 @@ public class ItemCarrito {
     private String nombre;
     private BigDecimal precio;
     private Integer cantidad;
-    private BigDecimal subtotal; // Almacena el precio * cantidad
-
-    // Constructor vacío (necesario para algunas operaciones y librerías)
+    private BigDecimal subtotal;
     public ItemCarrito() {
     }
 
-    // ⭐ CONSTRUCTOR CORRECTO QUE INCLUYE EL CÁLCULO DEL SUBTOTAL ⭐
    public ItemCarrito(Long idLibro, String nombre, BigDecimal precio, Integer cantidad) { 
     this.idLibro = idLibro;
     this.nombre = nombre;
@@ -25,7 +21,6 @@ public class ItemCarrito {
     this.subtotal = precio.multiply(BigDecimal.valueOf(cantidad));
 }
 
-    // --- Getters y Setters ---
 
     public Long getIdLibro() {
         return idLibro;
@@ -57,19 +52,17 @@ public class ItemCarrito {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
-        // ⚠️ IMPORTANTE: Si la cantidad cambia, el subtotal debe recalcularse
-        if (this.precio != null) {
+        if (this.precio != null && cantidad != null) {
             this.subtotal = this.precio.multiply(BigDecimal.valueOf(cantidad));
+        } else {
+            this.subtotal = BigDecimal.ZERO;
         }
     }
+
 
     public BigDecimal getSubtotal() {
         return subtotal;
     }
-    
-    // No se necesita setSubtotal ya que se calcula automáticamente
-
-    // --- Métodos de utilidad (opcional, pero buena práctica para colecciones) ---
     
     @Override
     public boolean equals(Object o) {
