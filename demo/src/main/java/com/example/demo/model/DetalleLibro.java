@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class DetalleLibro {
 
-    private Long idLibro;
+    private Integer idLibro;
     private String nombre;
     private BigDecimal precio;
     private Integer cantidad;
@@ -13,23 +13,24 @@ public class DetalleLibro {
     public DetalleLibro() {
     }
 
-    public DetalleLibro(Libro libro, int cantidad) {
-        this.idLibro = libro.getId();
-        this.nombre = libro.getNombre();
-        this.precio = libro.getPrecio(); 
-        this.cantidad = cantidad;
-        this.subtotal = this.precio.multiply(BigDecimal.valueOf(cantidad));
-    }
+    public DetalleLibro(Libro libro, Integer cantidad) {
+    this.idLibro = libro.getIdLibro();
+    this.nombre = libro.getTitulo();
+    this.precio = libro.getPrecio();
+    this.cantidad = cantidad;
+    this.subtotal = this.precio.multiply(BigDecimal.valueOf(cantidad));
+}
+
 
     public void calcularSubtotal() {
         this.subtotal = this.precio.multiply(BigDecimal.valueOf(this.cantidad));
     }
 
-    public Long getIdLibro() {
+    public Integer getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(Long idLibro) {
+    public void setIdLibro(Integer idLibro) {
         this.idLibro = idLibro;
     }
 

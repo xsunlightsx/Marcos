@@ -1,3 +1,9 @@
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
+
 @Entity
 @Table(name = "autor")
 public class Autor {
@@ -15,7 +21,7 @@ public class Autor {
     @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Libro> libros = new ArrayList<>();
 
-    // Constructor vacío
+    // Constructor vacío    
     public Autor() {}
 
     // Constructor completo (si lo necesitas)
