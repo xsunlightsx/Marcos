@@ -6,10 +6,10 @@ import com.example.demo.model.DetalleVenta;
 import com.example.demo.model.Libro;
 import com.example.demo.model.MetodoPago;
 import com.example.demo.model.Venta;
-import com.example.demo.model.Venta.TipoEntrega; 
-import com.example.demo.JPA.DetalleVentaRepository;
-import com.example.demo.JPA.LibroRepository; 
-import com.example.demo.JPA.VentaRepository; 
+import com.example.demo.model.TipoEntrega; 
+import com.example.demo.repository.DetalleVentaRepository;
+import com.example.demo.repository.LibroRepository; 
+import com.example.demo.repository.VentaRepository; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,8 +43,10 @@ public class VentaService {
 
         for (ItemCarrito item : carrito) {
 
-            Libro libro = libroRepository.findById(item.getIdLibro())
-                .orElseThrow(() -> new RuntimeException("Error fatal: Libro no encontrado con ID: " + item.getIdLibro() + ". Compra abortada."));
+            Libro libro = libroRepository.findById(item.getIdLibro().intValue())
+                .orElseThrow(() -> new RuntimeException(
+                "Error fatal: Libro no encontrado con ID: " + item.getIdLibro()
+            ));
             
             DetalleVenta detalle = new DetalleVenta();
             
