@@ -1,64 +1,22 @@
 package com.example.demo.service;
 
-import com.example.demo.model.ItemCarrito; 
-import com.example.demo.model.Cliente;
-import com.example.demo.model.DetalleVenta;
-import com.example.demo.model.Libro;
-import com.example.demo.model.MetodoPago;
+import com.example.demo.model.ItemCarrito;
 import com.example.demo.model.Venta;
-import com.example.demo.model.TipoEntrega; 
-import com.example.demo.repository.DetalleVentaRepository;
-import com.example.demo.repository.LibroRepository; 
-import com.example.demo.repository.VentaRepository; 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.example.demo.model.Cliente;
+import com.example.demo.model.MetodoPago;
+import com.example.demo.model.TipoEntrega;
 
-import java.math.BigDecimal; 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class VentaService {
+public interface VentaService {
+    List<Venta> findAll();
+    Optional<Venta> findById(Integer id);
+    Venta save(Venta venta);
+    void deleteById(Integer id);
 
-    @Autowired
-    private VentaRepository ventaRepository;
-
-    @Autowired
-    private DetalleVentaRepository detalleVentaRepository;
-    
-    @Autowired
-    private LibroRepository libroRepository; 
-
-    @Transactional
-    public Venta procesarCompra(List<ItemCarrito> carrito, Cliente cliente, MetodoPago metodoPago, 
-                                TipoEntrega tipoEntrega, BigDecimal totalCalculado) { 
-        
-        Venta nuevaVenta = new Venta();
-        nuevaVenta.setCliente(cliente);
-        nuevaVenta.setMetodoPago(metodoPago);
-        nuevaVenta.setTipoEntrega(tipoEntrega);
-        nuevaVenta.setTotal(totalCalculado);
-
-        Venta ventaGuardada = ventaRepository.save(nuevaVenta);
-
-        for (ItemCarrito item : carrito) {
-
-            Libro libro = libroRepository.findById(item.getIdLibro().intValue())
-                .orElseThrow(() -> new RuntimeException(
-                "Error fatal: Libro no encontrado con ID: " + item.getIdLibro()
-            ));
-            
-            DetalleVenta detalle = new DetalleVenta();
-            
-            detalle.setVenta(ventaGuardada); 
-            detalle.setLibro(libro);
-            detalle.setCantidad(item.getCantidad());
-            
-            detalle.setPrecioUnitario(item.getPrecio()); 
-
-            detalleVentaRepository.save(detalle);
-        }
-
-        return ventaGuardada;
-    }
+    // Método específico de negocio
+    Venta procesarCompra(List<ItemCarrito> carrito, Cliente cliente, MetodoPago metodoPago,
+                         TipoEntrega tipoEntrega, BigDecimal totalCalculado);
 }

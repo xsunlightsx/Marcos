@@ -4,6 +4,7 @@ import com.example.demo.model.Usuario;
 import com.example.demo.repository.UsuarioRepository;
 import com.example.demo.service.UsuarioService;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -16,27 +17,27 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> findAll() {
-        return repo.findAll();
-    }
-
-    @Override
-    public Usuario findById(Integer id) {
-        return repo.findById(id).orElse(null);
-    }
-
-    @Override
-    public Usuario save(Usuario usuario) {
+    public Usuario registrar(Usuario usuario) {
         return repo.save(usuario);
     }
 
     @Override
-    public void deleteById(Integer id) {
-        repo.deleteById(id);
+    public Usuario obtenerPorId(Integer id) {
+        return repo.findById(id).orElse(null);
     }
 
     @Override
-    public Usuario findByNombreUsuario(String nombreUsuario) {
+    public Usuario obtenerPorEmail(String email) {
+        return repo.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public Usuario obtenerPorNombreUsuario(String nombreUsuario) {
         return repo.findByNombreUsuario(nombreUsuario).orElse(null);
+    }
+
+    @Override
+    public List<Usuario> listarTodos() {
+        return repo.findAll();
     }
 }

@@ -16,22 +16,23 @@ public class RecomendacionController {
         this.service = service;
     }
 
-    @GetMapping
-    public String verRecomendaciones(Model model) {
-        model.addAttribute("nuevaRecomendacion", new Recomendacion());
-        model.addAttribute("recomendaciones", service.listar());
-        return "recomendaciones";
-    }
+@GetMapping
+public String verRecomendaciones(Model model) {
+    model.addAttribute("nuevaRecomendacion", new Recomendacion());
+    model.addAttribute("recomendaciones", service.findAll());
+    return "recomendaciones";
+}
 
-    @PostMapping("/agregar")
-    public String agregar(@ModelAttribute Recomendacion recomendacion) {
-        service.agregar(recomendacion);
-        return "redirect:/recomendaciones";
-    }
+@PostMapping("/agregar")
+public String agregar(@ModelAttribute Recomendacion recomendacion) {
+    service.save(recomendacion);
+    return "redirect:/recomendaciones";
+}
 
-    @GetMapping("/eliminar/{index}")
-    public String eliminar(@PathVariable int index) {
-        service.eliminar(index);
-        return "redirect:/recomendaciones";
-    }
+@GetMapping("/eliminar/{id}")
+public String eliminar(@PathVariable int id) {
+    service.deleteById(id);
+    return "redirect:/recomendaciones";
+}
+
 }
