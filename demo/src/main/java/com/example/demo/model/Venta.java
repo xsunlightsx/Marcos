@@ -2,11 +2,11 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "ventas")
+@Table(name = "venta")  // <-- corregido
 public class Venta {
 
     @Id
@@ -15,41 +15,48 @@ public class Venta {
     private Integer idVenta;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cliente", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_usuario", nullable = false) // <-- según tu SQL real
+    private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "metodo_pago_id", nullable = false) 
-    private MetodoPago metodoPago; 
-
-    @Column(name = "fecha", nullable = false)
-    private LocalDateTime fecha;
+    @Column(name = "fecha_venta", nullable = false)
+    private LocalDateTime fechaVenta;
 
     @Column(name = "total", precision = 10, scale = 2, nullable = false)
     private BigDecimal total;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_entrega", nullable = false)
-    private TipoEntrega tipoEntrega;
-
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleVenta> detalles;
 
-    public enum TipoEntrega {
-        digital, delivery
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_metodo_pago", nullable = false)
+    private MetodoPago metodoPago;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_entrega", nullable = false)
+    private TipoEntrega tipoEntrega;
+
+    public MetodoPago getMetodoPago() {
+    return metodoPago;
+    }
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public TipoEntrega getTipoEntrega() {
+        return tipoEntrega;
+    }
+    public void setTipoEntrega(TipoEntrega tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
     }
 
     public Venta() {
- 
-        this.fecha = LocalDateTime.now(); 
+        this.fechaVenta = LocalDateTime.now();
     }
 
-    public Venta(Cliente cliente, MetodoPago metodoPago, BigDecimal total, TipoEntrega tipoEntrega) {
-        this.cliente = cliente;
-        this.metodoPago = metodoPago;
+    public Venta(Usuario usuario, BigDecimal total) {
+        this.usuario = usuario;
         this.total = total;
-        this.tipoEntrega = tipoEntrega;
-        this.fecha = LocalDateTime.now(); 
+        this.fechaVenta = LocalDateTime.now();
     }
 
     public Integer getIdVenta() {
@@ -60,28 +67,20 @@ public class Venta {
         this.idVenta = idVenta;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public MetodoPago getMetodoPago() {
-        return metodoPago;
+    public LocalDateTime getFechaVenta() {
+        return fechaVenta;
     }
 
-    public void setMetodoPago(MetodoPago metodoPago) {
-        this.metodoPago = metodoPago;
-    }
-    
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setFechaVenta(LocalDateTime fechaVenta) {
+        this.fechaVenta = fechaVenta;
     }
 
     public BigDecimal getTotal() {
@@ -90,14 +89,6 @@ public class Venta {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
-    }
-
-    public TipoEntrega getTipoEntrega() {
-        return tipoEntrega;
-    }
-
-    public void setTipoEntrega(TipoEntrega tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
     }
 
     public List<DetalleVenta> getDetalles() {

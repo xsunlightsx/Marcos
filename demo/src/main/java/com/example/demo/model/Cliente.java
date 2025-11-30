@@ -1,9 +1,10 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
@@ -11,24 +12,23 @@ public class Cliente {
     @Column(name = "id_cliente")
     private Integer idCliente;
 
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column(name = "apellido", nullable = false, length = 50)
-    private String apellido;
-
-    @Column(name = "direccion", length = 100)
+    @Column(length = 200)
     private String direccion;
 
-    @Column(name = "telefono", length = 20)
+    @Column(length = 20)
     private String telefono;
 
     @OneToOne
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "id_usuario", unique = true, nullable = false)
     private Usuario usuario;
-    
-    public Cliente() {
-    }
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Venta> ventas;
+
+    public Cliente() {}
 
     public Integer getIdCliente() {
         return idCliente;
@@ -38,20 +38,12 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-        public String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public String getDireccion() {
@@ -77,5 +69,12 @@ public class Cliente {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    public List<Venta> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<Venta> ventas) {
+        this.ventas = ventas;
+    }
 }

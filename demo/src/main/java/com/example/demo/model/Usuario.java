@@ -1,38 +1,31 @@
-package com.example.demo.model;
-
-import jakarta.persistence.*;
-import java.io.Serializable;
-
 @Entity
-@Table(name = "usuarios")
-public class Usuario implements Serializable {
+@Table(name = "usuario")
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
     private Integer idUsuario;
 
-    @Column(name = "nombre_usuario", nullable = false, length = 50)
+    @Column(nullable = false, unique = true)
     private String nombreUsuario;
 
-    @Column(name = "contraseña", nullable = false, length = 100)
+    @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "rol", nullable = false)
-    private Rol rol; 
+    @Column(nullable = false)
+    private Rol rol;
 
-    @Column(name = "email", nullable = false, unique = true, length = 100)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    public enum Rol {
-        admin, cliente
-    }
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Cliente cliente;
 
-    public Usuario() {
-    }
+    // Constructor vacío requerido por JPA
+    public Usuario() {}
 
-
+    // Constructor completo
     public Usuario(String nombreUsuario, String password, Rol rol, String email) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
@@ -40,43 +33,21 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
+    public Integer getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(Integer idUsuario) { this.idUsuario = idUsuario; }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    public String getNombreUsuario() { return nombreUsuario; }
+    public void setNombreUsuario(String nombreUsuario) { this.nombreUsuario = nombreUsuario; }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+    public Rol getRol() { return rol; }
+    public void setRol(Rol rol) { this.rol = rol; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
 }
