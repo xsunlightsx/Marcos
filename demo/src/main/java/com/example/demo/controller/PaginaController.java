@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.JPA.LibroRepository;
+import com.example.demo.repository.LibroRepository;
 import com.example.demo.model.Libro;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

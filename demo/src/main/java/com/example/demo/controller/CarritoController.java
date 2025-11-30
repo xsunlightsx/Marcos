@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.ItemCarrito;
-import com.example.demo.JPA.LibroRepository;
+import com.example.demo.repository.LibroRepository;
 import com.example.demo.model.Libro;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +38,7 @@ public class CarritoController {
     }
 
     @PostMapping("/agregar")
-    public String agregarAlCarrito(@RequestParam Long idLibro,
+    public String agregarAlCarrito(@RequestParam Integer idLibro,
                                    @RequestParam(defaultValue = "1") int cantidad,
                                    @ModelAttribute("carrito") List<ItemCarrito> carrito) {
 
@@ -58,8 +58,8 @@ public class CarritoController {
 
             if (!existe) {
                 ItemCarrito nuevoItem = new ItemCarrito(
-                        libro.getId(),
-                        libro.getNombre(),
+                        libro.getIdLibro(),
+                        libro.getTitulo(),
                         libro.getPrecio(),
                         cantidad
                 );

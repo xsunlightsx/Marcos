@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class DetalleLibro {
 
-    private Integer idLibro;
+    private Long idLibro;
     private String nombre;
     private BigDecimal precio;
     private Integer cantidad;
@@ -26,11 +26,11 @@ public class DetalleLibro {
         this.subtotal = this.precio.multiply(BigDecimal.valueOf(this.cantidad));
     }
 
-    public Integer getIdLibro() {
+    public Long getIdLibro() {
         return idLibro;
     }
 
-    public void setIdLibro(Integer idLibro) {
+    public void setIdLibro(Long idLibro) {
         this.idLibro = idLibro;
     }
 

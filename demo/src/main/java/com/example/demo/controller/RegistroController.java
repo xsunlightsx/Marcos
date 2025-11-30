@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.JPA.ClienteRepository;
-import com.example.demo.JPA.UsuarioRepository;
+import com.example.demo.repository.ClienteRepository;
+import com.example.demo.repository.UsuarioRepository;
 import com.example.demo.model.Cliente;
 import com.example.demo.model.Usuario;
-import com.example.demo.model.Usuario.Rol;
+import com.example.demo.model.Rol;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +44,7 @@ public class RegistroController {
 
         String contraseñaEncriptada = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(contraseñaEncriptada);
-        usuario.setRol(Rol.cliente); 
+        usuario.setRol(Rol.CLIENTE); 
 
         usuarioRepository.save(usuario);
 

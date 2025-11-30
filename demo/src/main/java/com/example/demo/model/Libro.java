@@ -11,7 +11,7 @@ public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_libro")
-    private Integer idLibro;
+    private Long idLibro;
 
     @Column(name = "titulo", nullable = false, length = 255)
     private String titulo;
@@ -55,8 +55,11 @@ public class Libro {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public Integer getIdLibro() { return idLibro; }
-    public void setIdLibro(Integer idLibro) { this.idLibro = idLibro; }
+    public Editorial getEditorial() { return editorial; }
+    public void setEditorial(Editorial editorial) {this.editorial = editorial;}
+
+    public Long getIdLibro() { return idLibro; }
+    public void setIdLibro(Long idLibro) { this.idLibro = idLibro; }
 
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
