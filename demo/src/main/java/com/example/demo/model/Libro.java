@@ -16,6 +16,12 @@ public class Libro {
     @Column(name = "titulo", nullable = false, length = 255)
     private String titulo;
 
+    @Column(name = "imagen_url")
+    private String imagenUrl;
+    public String getImagenUrl() { return imagenUrl; }
+    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_autor")
     private Autor autor;
@@ -72,6 +78,13 @@ public class Libro {
 
     public BigDecimal getPrecio() { return precio; }
     public void setPrecio(BigDecimal precio) { this.precio = precio; }
+
+    public String getAutorNombre() {return autor != null ? autor.getNombre() : ""; }
+
+    public String getCategoriaNombre() {return categoria != null ? categoria.getNombre() : "";}
+
+    public String getEditorialNombre() {return editorial != null ? editorial.getNombre() : "";}
+
 
     public Integer getStock() { return stock; }
     public void setStock(Integer stock) { this.stock = stock; }
